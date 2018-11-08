@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700,900&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
   <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Poor+Story|Seaweed+Script|Shadows+Into+Light" rel="stylesheet">
-  
+
   <!-- font-family: 'Poor Story', cursive;
   font-family: 'Shadows Into Light', cursive;
   font-family: 'Amatic SC', cursive;
@@ -21,65 +21,30 @@
 <body>
   <div class="main-wrapper__container">
     <header class="main-header__module">
-      <div class="logo__element main-header">ChunkPack</div>
-      <div class="create-chunk-icon__element main-header">+</div>
+      <div class="logo__element --main-header">ChunkPackApp</div>
+      <div class="create-chunk-icon__element --main-header">+</div>
     </header>
 
+    {% block content %}
+
+
     <div class="chunk-wrapper__container">
-      
+    {% for chunkItem in chunkItems %}
       <div class="chunk-preview-item__module">
         <div class="box-header__module --chunk-preview-item">
           <div class="text-title__module --chunk-preview-item">
-            <h2 class="title__element --chunk-preview-item">Gulpfile.js</h2>
-            <p class="p__element --chunk-preview-item">Basic configuration for fast frontend development</p>
+            <h2 class="title__element --chunk-preview-item">{{ chunkItem.title }}</h2>
+            <p class="p__element --chunk-preview-item">{{ chunkItem.des }}</p>
           </div>
-          <div class="lang-badge__module --chunk-preview-item --javascript">
-            <div class="abb__element --chunk-preview-item ">JS</div> 
+          <div class="lang-badge__module --chunk-preview-item --javascript" style="background-color: {{ chunkItem.badge.color }}">
+            <div class="abb__element --chunk-preview-item ">{{ chunkItem.badge.text }}</div>
           </div>
         </div>
-        <div class="des-box__module --chunk-preview-item">
-          
-        </div>
+
         <div class="code-box__module --chunk-preview-item">
           <pre class="code__element --chunk-preview-item">
-            <code data-language='javascript'>
-  var gulp           = require('gulp'),
-  sass           = require('gulp-sass'),
-  browserSync    = require('browser-sync'),
-  autoprefixer   = require('gulp-autoprefixer'),
-  notify         = require("gulp-notify");
-
-
-// Пользовательские скрипты проекта
-
-gulp.task('browser-sync', function() {
-  browserSync({
-    server: {
-      baseDir: 'app'
-    },
-    notify: false,
-    // tunnel: true,
-    // tunnel: "projectmane", //Demonstration page: http://projectmane.localtunnel.me
-  });
-});
-
-gulp.task('sass', function() {
-  return gulp.src('app/sass/**/**/*.sass')
-  .pipe(sass({outputStyle: 'expand'}).on("error", notify.onError()))
-  //.pipe(rename({suffix: '.min', prefix : ''}))
-  .pipe(autoprefixer(['last 15 versions']))
-  //.pipe(cleanCSS()) // Опционально, закомментировать при отладке
-  .pipe(gulp.dest('app/css'))
-  .pipe(browserSync.reload({stream: true}));
-});
-
-gulp.task('watch', ['sass', 'browser-sync'], function() {
-  gulp.watch('app/sass/**/**/*.sass', ['sass']);
-  gulp.watch(['libs/**/*.js', 'app/js/common.js', 'js/**/*.js',], browserSync.reload);
-  gulp.watch('app/**/*.html', browserSync.reload);
-});
-
-gulp.task('default', ['watch']);
+            <code data-language='{{ chunkItem.lang }}'>
+{{ chunkItem.chunk }}
             </code>
           </pre>
         </div>
@@ -87,11 +52,31 @@ gulp.task('default', ['watch']);
           <div class="shortcut__element --chunk-preview-item">JavaScript</div>
         </div> -->
       </div>
-      
-      
+    {% endfor %}
+
+
     </div>
   </div>
-  
+
+  <form action="{% url 'addChunk' %}" method="post">
+    {% csrf_token %}
+
+    {{ addForm.title }}
+    {{ addForm.des }}
+    {{ addForm.badge }}
+    {{ addForm.chunk }}
+    {{ addForm.lang }}
+
+
+    <input type="submit">
+  </form>
+
+  {% endblock %}
+
+  <footer class="main-footer__module">
+    <div class="logo__element --main-footer">ChunkPack 2018</div>
+  </footer>
+
   <script src="{% static 'js/rainbow-custom.min.js' %}"></script>
 </body>
 </html>
