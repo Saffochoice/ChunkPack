@@ -1,0 +1,48 @@
+@import '../vars'
+.logo__element
+    font-family: 'Seaweed Script', cursive
+    font-size: 40px
+    //color: $light-purple
+.create-chunk-icon__element
+    width: 42px
+    height: 42px
+    border-radius: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    border: 1px solid black
+    cursor: pointer
+    transition: 0.3s
+    font-size: 16px
+    background: white
+    color: black
+    &:hover 
+        transform: scale(1.2)
+        color: white
+        background: linear-gradient(to right, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 50%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%)
+        border-color: white
+
+.code__element
+    overflow: auto
+    margin-top: 10px
+    height: 300px
+    margin-bottom: 0
+.title__element
+    &.--chunk-preview-item
+        margin-bottom: 0px
+        margin-top: 5px
+.p__element 
+    font-size: 14px 
+    &.--chunk-preview-item
+        margin-top: 0px
+
+.shortcut__element
+    //text-transform: uppercase
+    font-size: 18px
+
+.abb__element
+    text-transform: uppercase
+    font-size: 20px
+    
+
+    
