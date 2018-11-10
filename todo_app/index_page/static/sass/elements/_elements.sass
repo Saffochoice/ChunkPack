@@ -26,22 +26,44 @@
         background: linear-gradient(to right, rgba(235,233,249,1) 0%, rgba(216,208,239,1) 50%, rgba(206,199,236,1) 51%, rgba(193,191,234,1) 100%)
         border-color: white
 
+.typical-button__element
+  background-color: $button-green
+  padding: 0 30px
+  font-size: 14px
+  font-weight: bold
+  margin: 0 auto
+  width: 100%
+  cursor: pointer
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 40px
+  border-radius: 15px
+  border: none
+  color: white
 .code__element
     overflow: auto
     margin-top: 10px
-    height: 300px
+    height: 305px
     width: 100%
     position: absolute
     margin-bottom: 0
 .title__element
+    font-size: 22px
     &.--chunk-preview-item
         margin-bottom: 0px
         cursor: pointer
         transition: 0.3s
         &:hover
           text-decoration: underline
-        margin-top: 5px
-        font-size: 22px
+        margin-top: 0px
+
+    &.--add-chunk-modal
+      margin-top: 0
+      //text-align: center
+      margin-bottom: 10px
 .p__element
     font-size: 14px
     line-height: 1.3em
@@ -58,3 +80,50 @@
 .abb__element
     text-transform: uppercase
     font-size: 18px
+.modal-overlay__element
+  background: rgba(1,1,1,0.5)
+  position: fixed
+  height: 100vh
+  width: 100%
+  z-index: 99
+  top: 0
+  opacity: 0
+  left: 0
+.input-title__element
+  font-size: 13px
+  font-weight: lighter
+  margin-bottom: 5px
+.close-button__element
+  position: absolute
+  cursor: pointer
+  @extend .--on-hover-1
+  &.--add-chunk-modal
+    right: 25px
+    top: 25px
+
+.select__element
+  width: 100%
+  margin-bottom: 15px
+  border: 1px solid $input-border
+  outline: none
+  border-radius: 10px
+  height: 40px
+.textarea__element
+  width: 100%
+  margin-bottom: 15px
+  outline: none
+  padding: 15px
+  border-radius: 10px
+  border: 1px solid $input-border
+.input-text__element
+  width: 100%
+  height: 40px
+  margin-bottom: 15px
+  border-radius: 10px
+  border: none
+  border: 1px solid $input-border
+  padding: 10px
+  font-size: 15px
+  outline: none
+  position: relative
+  &[name=title]

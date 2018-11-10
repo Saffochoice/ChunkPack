@@ -36,14 +36,14 @@
             <h2 class="title__element --chunk-preview-item">{{ chunkItem.title }}</h2>
             <p class="p__element --chunk-preview-item">{{ chunkItem.des }}</p>
           </div>
-          <div class="lang-badge__module --chunk-preview-item --javascript" style="background-color: {{ chunkItem.badge.color }}">
-            <div class="abb__element --chunk-preview-item ">{{ chunkItem.badge.text }}</div>
+          <div class="lang-badge__module --chunk-preview-item --javascript" style="background-color: {{ chunkItem.lang.color }}">
+            <div class="abb__element --chunk-preview-item ">{{ chunkItem.lang.abb }}</div>
           </div>
         </div>
 
         <div class="code-box__module --chunk-preview-item">
           <pre class="code__element --chunk-preview-item">
-            <code data-language='{{ chunkItem.lang }}'>
+            <code data-language='{{ chunkItem.lang.language }}'>
 {{ chunkItem.chunk }}
             </code>
           </pre>
@@ -58,18 +58,7 @@
     </div>
   </div>
 
-  <form action="{% url 'addChunk' %}" method="post">
-    {% csrf_token %}
 
-    {{ addForm.title }}
-    {{ addForm.des }}
-    {{ addForm.badge }}
-    {{ addForm.chunk }}
-    {{ addForm.lang }}
-
-
-    <input type="submit">
-  </form>
 
   {% endblock %}
 
@@ -77,6 +66,30 @@
     <div class="logo__element --main-footer">ChunkPack 2018</div>
   </footer>
 
+  <div class="add-chunk-modal__module">
+    <div class="close-button__element --add-chunk-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <h2 class="title__element --add-chunk-modal">Add Chunk</h2>
+    <form class="form__module" action="{% url 'addChunk' %}" method="post">
+      {% csrf_token %}
+      <div class="input-title__element">Title</div>
+      {{ addForm.title }}
+      <div class="input-title__element">Description</div>
+      {{ addForm.des }}
+      <div class="input-title__element">Language</div>
+      {{ addForm.lang }}
+      <div class="input-title__element">Code</div>
+      {{ addForm.chunk }}
+
+
+
+      <input type="submit" class="--on-hover-1 typical-button__element" value='Create Chunk'>
+    </form>
+  </div>
+
+
+  <script src="{% static 'js/jquery3.js' %}"></script>
   <script src="{% static 'js/rainbow-custom.min.js' %}"></script>
+  <script src="{% static 'js/modalsModule.js' %}"></script>
+  <script src="{% static 'js/modalsController.js' %}"></script>
 </body>
 </html>
