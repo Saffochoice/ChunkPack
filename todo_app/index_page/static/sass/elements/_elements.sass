@@ -2,6 +2,7 @@
 .logo__element
     font-family: 'Poor Story', cursive
     font-size: 40px
+    cursor: pointer
     &.--main-footer
       font-size: 30px
       font-family: 'Amatic SC', cursive
@@ -50,6 +51,10 @@
     width: 100%
     position: absolute
     margin-bottom: 0
+    &.--content-wrapper
+      background-color: #fff
+      position: relative
+      height: auto
 .title__element
     font-size: 22px
     &.--chunk-preview-item
@@ -60,18 +65,31 @@
           text-decoration: underline
         margin-top: 0px
 
-    &.--add-chunk-modal
+    &.--typical-modal
       margin-top: 0
       //text-align: center
       margin-bottom: 10px
+    &.--content-wrapper
+      font-size: 29px
+      margin-bottom: 0px
+      line-height: 34px
+    &.--edit__module
+      cursor: pointer
+      &:hover
+        text-decoration: underline
 .p__element
     font-size: 14px
+
     line-height: 1.3em
     font-weight: lighter
     overflow: hidden
     &.--chunk-preview-item
         margin-top: 0px
         height: 36px
+    &.--content-wrapper
+        margin-top: 10px
+        font-size: 18px
+        line-height: 26px
 
 .shortcut__element
     //text-transform: uppercase
@@ -97,7 +115,7 @@
   position: absolute
   cursor: pointer
   @extend .--on-hover-1
-  &.--add-chunk-modal
+  &.--typical-modal
     right: 25px
     top: 25px
 
@@ -127,3 +145,9 @@
   outline: none
   position: relative
   &[name=title]
+.icon__element
+  &.--edit__module
+    cursor: pointer
+    order: 2
+    &:hover ~ h2
+      text-decoration: underline

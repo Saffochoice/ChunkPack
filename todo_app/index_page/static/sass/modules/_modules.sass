@@ -5,6 +5,7 @@
     display: flex
     position: fixed
     width: 100%
+    z-index: 90
     background-color: #fff
     align-items: center
     justify-content: space-between
@@ -20,6 +21,9 @@
     display: flex
     justify-content: space-between
     //align-items: center
+    &.--content-wrapper
+      align-items: flex-end
+      //align-items: center
 .lang-badge__module
     display: flex
     max-width: 80px
@@ -32,12 +36,13 @@
     border: 4px double white
     font-weight: bold
     border-width: 6px
-    &.--javascript
-        background-color: $js
-        color: white
+    color: white
     transition: 0.3s
     cursor: pointer
     opacity: 0.7
+    &.--content-wrapper
+      margin-left: 30px
+      margin-bottom: 18px
     &:hover
       //border-color: black
       opacity: 1
@@ -50,7 +55,12 @@
   justify-content: center
 .code-box__module
   position: relative
-.add-chunk-modal__module
+  &.--content-wrapper
+    background-color: #fff
+    pre, pre code
+      background-color: #fff
+
+.typical-modal__module
   position: fixed
   width: 400px
   display: none
@@ -75,3 +85,10 @@
     outline: none
     border-radius: 10px
     height: 40px
+.edit__module
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  align-items: center
+  i
+    margin-left: 15px

@@ -28,12 +28,12 @@
     {% block content %}
 
 
-    <div class="chunk-wrapper__container">
+    <div class="content-wrapper__container">
     {% for chunkItem in chunkItems %}
       <div class="chunk-preview-item__module">
         <div class="box-header__module --chunk-preview-item">
           <div class="text-title__module --chunk-preview-item">
-            <h2 class="title__element --chunk-preview-item">{{ chunkItem.title }}</h2>
+            <h2 class="title__element --chunk-preview-item" onclick="location.href='./single-chunk/{{ chunkItem.id }}'">{{ chunkItem.title }}</h2>
             <p class="p__element --chunk-preview-item">{{ chunkItem.des }}</p>
           </div>
           <div class="lang-badge__module --chunk-preview-item --javascript" style="background-color: {{ chunkItem.lang.color }}">
@@ -62,13 +62,16 @@
 
   {% endblock %}
 
+
+
   <footer class="main-footer__module">
     <div class="logo__element --main-footer">ChunkPack 2018</div>
   </footer>
 
-  <div class="add-chunk-modal__module">
-    <div class="close-button__element --add-chunk-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
-    <h2 class="title__element --add-chunk-modal">Add Chunk</h2>
+  {% block modals %}
+  <div class="typical-modal__module --add-chunk">
+    <div class="close-button__element --typical-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+    <h2 class="title__element --typical-modal">Add Chunk</h2>
     <form class="form__module" action="{% url 'addChunk' %}" method="post">
       {% csrf_token %}
       <div class="input-title__element">Title</div>
@@ -85,11 +88,13 @@
       <input type="submit" class="--on-hover-1 typical-button__element" value='Create Chunk'>
     </form>
   </div>
+  {% endblock %}
 
 
   <script src="{% static 'js/jquery3.js' %}"></script>
   <script src="{% static 'js/rainbow-custom.min.js' %}"></script>
   <script src="{% static 'js/modalsModule.js' %}"></script>
   <script src="{% static 'js/modalsController.js' %}"></script>
+  <script src="{% static 'js/baseController.js' %}"></script>
 </body>
 </html>
