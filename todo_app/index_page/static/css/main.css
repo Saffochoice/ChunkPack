@@ -1,5 +1,5 @@
 .logo__element {
-  font-family: 'Poor Story', cursive;
+  font-family: 'Kaushan Script', cursive;
   font-size: 40px;
   cursor: pointer; }
   .logo__element.--main-footer {
@@ -68,6 +68,8 @@
           border-radius: 15px;
   border: none;
   color: white; }
+  .typical-button__element.--edit {
+    background-color: #e84e3a; }
 
 .code__element {
   overflow: auto;
