@@ -21,4 +21,4 @@ class ChunkModel(models.Model):
     chunk = models.TextField(max_length=10000)
     lang = models.ForeignKey(Language, on_delete=models.CASCADE, default='-')
     def __str__(self):
-        return self.title
+        return self.pk

@@ -1,6 +1,7 @@
 .logo__element {
   font-family: 'Poor Story', cursive;
-  font-size: 40px; }
+  font-size: 40px;
+  cursor: pointer; }
   .logo__element.--main-footer {
     font-size: 30px;
     font-family: 'Amatic SC', cursive; }
@@ -75,6 +76,10 @@
   width: 100%;
   position: absolute;
   margin-bottom: 0; }
+  .code__element.--content-wrapper {
+    background-color: #fff;
+    position: relative;
+    height: auto; }
 
 .title__element {
   font-size: 22px; }
@@ -87,9 +92,17 @@
     margin-top: 0px; }
     .title__element.--chunk-preview-item:hover {
       text-decoration: underline; }
-  .title__element.--add-chunk-modal {
+  .title__element.--typical-modal {
     margin-top: 0;
     margin-bottom: 10px; }
+  .title__element.--content-wrapper {
+    font-size: 29px;
+    margin-bottom: 0px;
+    line-height: 34px; }
+  .title__element.--edit__module {
+    cursor: pointer; }
+    .title__element.--edit__module:hover {
+      text-decoration: underline; }
 
 .p__element {
   font-size: 14px;
@@ -99,6 +112,10 @@
   .p__element.--chunk-preview-item {
     margin-top: 0px;
     height: 36px; }
+  .p__element.--content-wrapper {
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 26px; }
 
 .shortcut__element {
   font-size: 18px; }
@@ -125,7 +142,7 @@
 .close-button__element {
   position: absolute;
   cursor: pointer; }
-  .close-button__element.--add-chunk-modal {
+  .close-button__element.--typical-modal {
     right: 25px;
     top: 25px; }
 
@@ -160,6 +177,15 @@
   outline: none;
   position: relative; }
 
+.icon__element.--edit__module {
+  cursor: pointer;
+  -webkit-box-ordinal-group: 3;
+  -webkit-order: 2;
+      -ms-flex-order: 2;
+          order: 2; }
+  .icon__element.--edit__module:hover ~ h2 {
+    text-decoration: underline; }
+
 .main-header__module {
   overflow: hidden;
   height: 80px;
@@ -170,6 +196,7 @@
   display: flex;
   position: fixed;
   width: 100%;
+  z-index: 90;
   background-color: #fff;
   -webkit-box-align: center;
   -webkit-align-items: center;
@@ -198,6 +225,11 @@
   -webkit-justify-content: space-between;
       -ms-flex-pack: justify;
           justify-content: space-between; }
+  .box-header__module.--content-wrapper {
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+            align-items: flex-end; }
 
 .lang-badge__module {
   display: -webkit-box;
@@ -220,14 +252,15 @@
   border: 4px double white;
   font-weight: bold;
   border-width: 6px;
+  color: white;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
   cursor: pointer;
   opacity: 0.7; }
-  .lang-badge__module.--javascript {
-    background-color: #f4a742;
-    color: white; }
+  .lang-badge__module.--content-wrapper {
+    margin-left: 30px;
+    margin-bottom: 18px; }
   .lang-badge__module:hover {
     opacity: 1; }
 
@@ -249,8 +282,12 @@
 
 .code-box__module {
   position: relative; }
+  .code-box__module.--content-wrapper {
+    background-color: #fff; }
+    .code-box__module.--content-wrapper pre, .code-box__module.--content-wrapper pre code {
+      background-color: #fff; }
 
-.add-chunk-modal__module {
+.typical-modal__module {
   position: fixed;
   width: 400px;
   display: none;
@@ -289,9 +326,22 @@
             border-radius: 10px;
     height: 40px; }
 
-.chunk-wrapper__container {
-  min-height: -webkit-calc(100vh - 80px);
-  min-height: calc(100vh - 80px);
+.edit__module {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center; }
+  .edit__module i {
+    margin-left: 15px; }
+
+.content-wrapper__container {
+  min-height: -webkit-calc(100vh - 72px);
+  min-height: calc(100vh - 72px);
   padding: 15px;
   -webkit-box-pack: justify;
   -webkit-justify-content: space-between;
@@ -309,6 +359,9 @@
   grid-gap: 15px;
   background-color: #f9f9f9;
   padding-top: 95px; }
+  .content-wrapper__container.--single-chunk {
+    display: block;
+    padding: 95px 25px 25px 25px; }
 
 .--on-hover-1, .close-button__element {
   -webkit-transition: 0.3s;
@@ -327,6 +380,8 @@
   *:before, *:after {
     -webkit-box-sizing: border-box;
     box-sizing: border-box; }
+  *::-webkit-scrollbar {
+    width: 0; }
 
 *::-webkit-input-placeholder {
   color: #666;

@@ -1,0 +1,81 @@
+    {% extends 'index_page/index.html' %}
+
+    {% block content %}
+
+
+    <div class="content-wrapper__container --single-chunk">
+      <div class="box-header__module --content-wrapper">
+        <div class="left-side">
+          <!-- <h2 class="title__element --content-wrapper">{{ chunkItem.title }}</h2>
+          <p class="p__element --content-wrapper">{{ chunkItem.des }}</p> -->
+          <div class="box-header__module --content-wrapper">
+            <div class="text-title__module --content-wrapper">
+              <h2 class="title__element --content-wrapper" onclick="location.href='./single-chunk/{{ chunkItem.id }}'">{{ chunkItem.title }}</h2>
+              <p class="p__element --content-wrapper">{{ chunkItem.des }}</p>
+            </div>
+            <div class="lang-badge__module --content-wrapper" style="background-color: {{ chunkItem.lang.color }}">
+              <div class="abb__element --content-wrapper ">{{ chunkItem.lang.abb }}</div>
+            </div>
+          </div>
+        </div>
+        <div class="right-side">
+          <div class="edit__module --single-chunk">
+            <i class="fa fa-pencil-square-o icon__element --edit__module" aria-hidden="true"></i>
+            <h2 class="title__element --edit__module">Edit</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-box__module --content-wrapper">
+        <pre class="code__element --content-wrapper">
+          <code data-language='{{ chunkItem.lang.language }}'>
+{{ chunkItem.chunk }}
+          </code>
+        </pre>
+      </div>
+    </div>
+
+    {% endblock %}
+
+
+    {% block modals %}
+    <div class="typical-modal__module --add-chunk">
+      <div class="close-button__element --typical-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+      <h2 class="title__element --typical-modal">Add Chunk</h2>
+      <form class="form__module" action="{% url 'addChunk' %}" method="post">
+        {% csrf_token %}
+        <div class="input-title__element">Title</div>
+        {{ addForm.title }}
+        <div class="input-title__element">Description</div>
+        {{ addForm.des }}
+        <div class="input-title__element">Language</div>
+        {{ addForm.lang }}
+        <div class="input-title__element">Code</div>
+        {{ addForm.chunk }}
+
+
+
+        <input type="submit" class="--on-hover-1 typical-button__element" value='Create Chunk'>
+      </form>
+    </div>
+
+    <div class="typical-modal__module --edit-chunk">
+      <div class="close-button__element --typical-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+      <h2 class="title__element --typical-modal">Edit Chunk</h2>
+      <form class="form__module" action="{% url 'editChunk' chunkItem.id %}" method="post">
+        {% csrf_token %}
+        <div class="input-title__element">Title</div>
+        {{ editForm.title }}
+        <div class="input-title__element">Description</div>
+        {{ editForm.des }}
+        <div class="input-title__element">Language</div>
+        {{ editForm.lang }}
+        <div class="input-title__element">Code</div>
+        {{ editForm.chunk }}
+
+
+
+        <input type="submit" class="--on-hover-1 typical-button__element" value='Edit'>
+      </form>
+    </div>
+    {% endblock %}

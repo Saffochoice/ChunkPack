@@ -12,3 +12,13 @@ class AddChunkForm(ModelForm):
             #'lang': SelectMultiple(attrs={'class':'select__element'}),
             'chunk': Textarea(attrs={'class':'textarea__element'}),
         }
+class EditChunkForm(ModelForm):
+    class Meta:
+        model = models.ChunkModel
+        fields = ['title', 'des', 'chunk', 'lang']
+        widgets = {
+            'title': TextInput(attrs={'class':'input-text__element'}),
+            'des': TextInput(attrs={'class':'input-text__element'}),
+            #'lang': SelectMultiple(attrs={'class':'select__element'}),
+            'chunk': Textarea(attrs={'class':'textarea__element'}),
+        }

@@ -1,13 +1,17 @@
 $(function(){
-  //modalsModule.openModal($('.add-chunk-modal__module'), 200);
-  //modalsModule.closeModal($('.add-chunk-modal__module'), 200);
+
 });
 $('.create-chunk-icon__element.--main-header').click(function(){
-  modalsModule.openModal($('.add-chunk-modal__module'), 200);
+  modalsModule.openModal($('.typical-modal__module.--add-chunk'), 200);
 });
-$('.close-button__element.--add-chunk-modal').click(function(){
-  modalsModule.closeModal($('.add-chunk-modal__module'), 100);
+$('.close-button__element').click(function(){
+  modalsModule.closeModal($('.typical-modal__module'), 100);
 });
 $( document ).delegate('.modal-overlay__element', 'click', function(){
-  modalsModule.closeModal($('.add-chunk-modal__module'), 100);
+  modalsModule.closeModal($('.typical-modal__module'), 100);
+});
+
+// Single page
+$('.edit__module.--single-chunk').click(function(){
+  modalsModule.openModal($('.typical-modal__module.--edit-chunk'), 200);
 });
