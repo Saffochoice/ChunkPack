@@ -10,6 +10,12 @@
     align-items: center
     justify-content: space-between
     box-shadow: 0px 2px 31px -9px rgba(214,214,214,1)
+.nav__module
+  display: -webkit-flex
+  display: -ms-flex
+  display: flex
+  > h2
+    margin-right: 15px
 .chunk-preview-item__module
     //width: 24.5%
     height: 422px
@@ -46,6 +52,10 @@
     &:hover
       //border-color: black
       opacity: 1
+    &.--language-preview-item
+      margin-left: 0
+      margin: 0
+
 .main-footer__module
   height: 70px
   display: -webkit-flex
@@ -71,6 +81,13 @@
   padding: 25px
   z-index: 100
   border-radius: 20px
+.text-title__module
+  &.--language-preview-item
+
+    margin-right: 20px
+    h2
+      margin: 0
+
 .form__module
   display: -webkit-flex
   display: -ms-flex
@@ -92,3 +109,11 @@
   align-items: center
   i
     margin-left: 15px
+.language-preview-item__module
+  display: -webkit-flex
+  background-color: #fff
+  padding: 15px
+  box-shadow: $typical-shadow
+  display: -ms-flex
+  display: flex
+  align-items: center

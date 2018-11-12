@@ -1,0 +1,57 @@
+    {% extends 'index_page/index.html' %}
+
+    {% block header %}
+    <header class="main-header__module">
+      <div class="logo__element --main-header">ChunkPackApp</div>
+      <div class="nav__module">
+        <h2 class="title__element --nav" onclick="location.href='../../'">Chunks</h2>
+        <h2 class="title__element --nav selected">Languages</h2>
+      </div>
+      <div class="create-chunk-icon__element --main-header">+</div>
+    </header>
+    {% endblock %}
+
+    {% block content %}
+
+
+    <div class="content-wrapper__container --languages">
+      {% for langItem in langItems %}
+      <div class="language-preview-item__module">
+        <div class="text-title__module --language-preview-item">
+          <h2 class="title__element --language-preview-item">Language (syntax highlighting class): <span>{{ langItem.language }}</span></h2>
+          <h2 class="title__element --language-preview-item --small">HEX: <span>{{ langItem.color }}</span></h2>
+        </div>
+
+        <div class="lang-badge__module --chunk-preview-item --language-preview-item" style="background-color: {{ langItem.color }}">
+          <div class="abb__element --chunk-preview-item ">{{ langItem.abb }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% endblock %}
+
+
+    {% block modals %}
+    <div class="typical-modal__module --add-chunk">
+      <div class="close-button__element --typical-modal"><i class="fa fa-times" aria-hidden="true"></i></div>
+      <h2 class="title__element --typical-modal">Add Chunk</h2>
+      <form class="form__module" action="{% url 'addChunk' %}" method="post">
+        {% csrf_token %}
+        <div class="input-title__element">Title</div>
+        {{ addForm.title }}
+        <div class="input-title__element">Description</div>
+        {{ addForm.des }}
+        <div class="input-title__element">Language</div>
+        {{ addForm.lang }}
+        <div class="input-title__element">Code</div>
+        {{ addForm.chunk }}
+
+
+
+        <input type="submit" class="--on-hover-1 typical-button__element" value='Create Chunk'>
+      </form>
+    </div>
+
+
+    {% endblock %}

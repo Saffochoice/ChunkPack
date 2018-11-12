@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
-from .models import ChunkModel
+from .models import ChunkModel, Language
 from .import forms
 
 
@@ -17,6 +17,16 @@ def index(request):
         'addForm': addChunkForm
     }
     return render(request, 'index_page/index.html', ctx)
+
+def languages(request):
+    langItems = Language.objects.order_by('id')
+    addLangForm = forms.AddLangForm()
+    ctx = {
+        'langItems': langItems,
+        'addForm': addLangForm
+    }
+    return render(request, 'index_page/languages.html', ctx)
+
 
 def singleChunk(request, id):
     chunkItem = ChunkModel.objects.get(pk=id)

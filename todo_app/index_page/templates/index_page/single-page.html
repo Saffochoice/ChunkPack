@@ -1,5 +1,16 @@
     {% extends 'index_page/index.html' %}
 
+    {% block header %}
+    <header class="main-header__module">
+      <div class="logo__element --main-header">ChunkPackApp</div>
+      <div class="nav__module">
+        <h2 class="title__element --nav" onclick="location.href='../../'">Chunks</h2>
+        <h2 class="title__element --nav" onclick="location.href='../../languages'">Languages</h2>
+      </div>
+      <div class="create-chunk-icon__element --main-header">+</div>
+    </header>
+    {% endblock %}
+
     {% block content %}
 
 

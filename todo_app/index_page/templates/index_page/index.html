@@ -20,10 +20,16 @@
 </head>
 <body>
   <div class="main-wrapper__container">
+    {% block header %}
     <header class="main-header__module">
       <div class="logo__element --main-header">ChunkPackApp</div>
+      <div class="nav__module">
+        <h2 class="title__element --nav selected">Chunks</h2>
+        <h2 class="title__element --nav" onclick="location.href='./languages'">Languages</h2>
+      </div>
       <div class="create-chunk-icon__element --main-header">+</div>
     </header>
+    {% endblock %}
 
     {% block content %}
 
@@ -36,7 +42,7 @@
             <h2 class="title__element --chunk-preview-item" onclick="location.href='./single-chunk/{{ chunkItem.id }}'">{{ chunkItem.title }}</h2>
             <p class="p__element --chunk-preview-item">{{ chunkItem.des }}</p>
           </div>
-          <div class="lang-badge__module --chunk-preview-item --javascript" style="background-color: {{ chunkItem.lang.color }}">
+          <div class="lang-badge__module --chunk-preview-item" style="background-color: {{ chunkItem.lang.color }}">
             <div class="abb__element --chunk-preview-item ">{{ chunkItem.lang.abb }}</div>
           </div>
         </div>

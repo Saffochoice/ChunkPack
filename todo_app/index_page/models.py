@@ -8,8 +8,8 @@ class Badge(models.Model):
         return self.text
 
 class Language(models.Model):
-    language = models.CharField(max_length=10)
-    abb = models.CharField(max_length=30)
+    language = models.CharField(max_length=30)
+    abb = models.CharField(max_length=10)
     color = models.CharField(max_length=7)
     def __str__(self):
         return self.language
